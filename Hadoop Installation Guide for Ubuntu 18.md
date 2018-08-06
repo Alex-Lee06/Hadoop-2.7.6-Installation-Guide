@@ -8,7 +8,7 @@ Below is a script that you will be able to run as well to install Hadoop-2.7.6 b
 
 * Java version 1.7.0 or 1.8.0
 
-  > If you don't have a java version to install it is below
+  > If you don't have a java version you will need to install it.  The reason why you need java is because hadoop uses JVM to do it's executions
 
   ```
   $ sudo apt-get install default-jdk
@@ -29,7 +29,7 @@ Below is a script that you will be able to run as well to install Hadoop-2.7.6 b
   $ javac -version
   ```
 
-  > If you do not see a version you will get commands that shows you how to install it.
+  > If you do not see a version you will need to install it first.
   >
   > Not sure how to install it? Follow the command below.
 
@@ -66,7 +66,7 @@ Use 'sudo apt autoremove' to remove them.
 
 > Now we have ssh.  This will be used to allow your master node to interact with your slave nodes.  I will show how that works later on.
 
-* Let's generate a public key and a private key pair
+* Let's generate a public key and a private key pair.  This will allow your Master to interact with your slave nodes.
 
 ```
 $ ssh-keygen -t rsa -P ""
@@ -109,7 +109,7 @@ Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-29-generic x86_64)
 
 ```
 
-> Now that we have our ssh working and can access our localhost let's exit out of it so that we can continue our Hadoop configurations.
+> Now that we have our ssh working and can ssh to ourselves let's exit out of it so that we can continue our Hadoop configurations.
 
 ```
 $ exit
@@ -117,32 +117,43 @@ $ exit
 
 * With ssh installed and configured we can now download and install Hadoop-2.7.6. To do this let's go to http://hadoop.apache.org/releases.html and look for 2.7.6 binary
 * Or you can follow the steps below for CLI commands.
+* First lets move to your **Downloads** folder.
+* Please pay attention to what is before **$** so that this guide with be easier to follow.
 
 ```
-wget http://apache.osuosl.org/hadoop/common/hadoop-2.7.6/hadoop-2.7.6.tar.gz
+~$ cd Downloads
+~/Downloads$ wget http://apache.osuosl.org/hadoop/common/hadoop-2.7.6/hadoop-2.7.6.tar.gz
 ```
 
-* Once the installation is completed lets extract and move your newly **hadoop-2.7.6** extraction to **/usr/local**
+> In your downloads folder you should see **hadoop-2.7.6.tar.gz**.  You will need to untar this file because the actual binary folder is located in this compressed folder.
+
+* To untar/extract this compressed folder we will need the following command
 
 ```
-$ sudo mv hadoop-2.7.6 /usr/local
+~/Downloads$ tar xvf hadoop-2.7.6.tar.gz
+```
+
+* Now lets move your newly **hadoop-2.7.6** extraction to **/usr/local**
+
+```
+~/Downloads$ sudo mv hadoop-2.7.6 /usr/local
 ```
 
 > We now need to change our directory to the path that **hadoop-2.7.6** is located.
 
 ```
-$ cd /usr/local/hadoop-2.7.6
+~/Downloads$ cd /usr/local/hadoop-2.7.6
 ```
 
 > Now that we have Hadoop in the location we want it to be. The next steps needs to be carefully executed.  We will begin configuring our ~/.bashrc file
 
 ```
-$sudo gedit ~/.bashrc
+/usr/local$sudo gedit ~/.bashrc
 ```
 
 > Gedit is just a simple text editor.  You can use whatever you like.
 
-* Editing our **~/.bashrc file**.  I recommend typing this part in to learn, but you can copy and paste from here.
+* Editing our **~/.bashrc file**.  I recommend typing this part in to learn, but you can copy and paste from here.  Add this to the bottom of your **~/.bashrc**.
 
 > ```
 > export HADOOP_PREFIX=/home/hdadmin/hadoop-2.7.6
@@ -156,6 +167,7 @@ $sudo gedit ~/.bashrc
 > export HADOOP_OPTS="-Djava.library.path=$HADOOP_PREFIX"
 > ```
 
+* I recommend installing Sublime Text or a text editor so that you can open the **.sh** and **xml** files to edit them all there.  This will save you time and make things easier to work with.
 * Lets now edit the **hadoop-env.sh** to have it be able to locate your JAVA_HOME:
 
 > export JAVA_HOME:{root-of-your-Java-installation}
@@ -166,9 +178,8 @@ $sudo gedit ~/.bashrc
 
 * Now that the environment for hadoop has been configured let's contine with the configurations for **core-site.xml**, **hdfs-site.xml**, **yarn-site.xml**, and **mapred-site.xml**
 
-> I recommend installing Sublime Text so that all 4 **xml** files can be opened at the same time.  This will save you time.
 
-* Let's first configure the **core-site.xml**. This is located in etc/hadoop inside the installation directory for Hadoop.  The needed configuration is below.
+* Let's first configure the **core-site.xml**. This is located in etc/hadoop inside the installation directory for Hadoop.  The needed configuration is below.  This will set the paths for your HDFS data to be stored.
 
 > 1. ```
 >    <configuration>
@@ -253,7 +264,7 @@ You will see the following (This is what you should see near the bottom with an 
 Once that is complete successfully you can now run the following code.  You should be able to run this code anywhere from the terminal if not you will need to navigate to **/usr/local/hadoop-2.7.6/sbin**
 
 ```
-$start-dfs.sh
+~$start-dfs.sh
 ```
 
 The above command will start hdfs which has your **NameNode, SecondaryNameNode, DataNode**
@@ -261,12 +272,12 @@ The above command will start hdfs which has your **NameNode, SecondaryNameNode, 
 Now you can start yarn.
 
 ```
-$start-yarn.sh
+~$start-yarn.sh
 ```
 
 This will start your **ResouceManage and NodeManager**
 
-To see everything that is running use JPS
+To see all the services that is running use JPS
 
 ```
 master@hadoop:/usr/local/hadoop-2.7.6/sbin$ jps
@@ -278,6 +289,8 @@ master@hadoop:/usr/local/hadoop-2.7.6/sbin$ jps
 3019 DataNode
 
 ```
+
+* Once you have all the services above showing you can access **HDFS** by going to **localhost:50070**. This is the web interface for **HDFS**
 
 ## The installation of Hadoop 2.7.6 is complete you can now run map reduce jobs!!
 
