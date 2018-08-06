@@ -109,7 +109,7 @@ Welcome to Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-29-generic x86_64)
 
 ```
 
-> Now that we have our ssh working and can ssh to ourselves let's exit out of it so that we can continue our Hadoop configurations.
+> Now that we have our ssh working and can ssh to ourselves let's exit out of it so that we can continue our Hadoop installation/configurations.
 
 ```
 $ exit
@@ -118,7 +118,7 @@ $ exit
 * With ssh installed and configured we can now download and install Hadoop-2.7.6. To do this let's go to http://hadoop.apache.org/releases.html and look for 2.7.6 binary
 * Or you can follow the steps below for CLI commands.
 * First lets move to your **Downloads** folder.
-* Please pay attention to what is before **$** so that this guide with be easier to follow.
+* Please pay attention to what is before **$** so that this guide with be easier to follow.  It will show which directory you are located.
 
 ```
 ~$ cd Downloads
