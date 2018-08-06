@@ -170,27 +170,31 @@ $sudo gedit ~/.bashrc
 
 * Let's first configure the **core-site.xml**. This is located in etc/hadoop inside the installation directory for Hadoop.  The needed configuration is below.
 
-> 1. <configuration>
-> 2. <property>
-> 3. <name>fs.defaultFS</name>
-> 4. <value>hdfs://localhost:9000</value>
-> 5. </property>
-> 6. <property>
-> 7. <name>hadoop.tmp.dir</name>
-> 8. <value>/home/hdadmin/hdata</value>
-> 9. </property>
-> 10. </configuration>
+> 1. ```
+>    <configuration>
+>    <property>
+>    <name>fs.defaultFS</name>
+>    <value>hdfs://localhost:9000</value>
+>    </property>
+>    <property>
+>    <name>hadoop.tmp.dir</name>
+>    <value>/home/hdadmin/hdata</value>
+>    </property>
+>    </configuration>
+>    ```
 
 > After editing this file save it and move on to the **hdfs-site.xml**
 
 * Let's configure the **hdfs-site.xml**. The location to this file is in etc/hadoop inside the installation directory for Hadoop.  The needed configuration is below.
 
-> 1. <configuration>
-> 2. <property>
-> 3. <name>dfs.replication</name>
-> 4. <value>1</value>
-> 5. </property>
-> 6. </configuration>
+> 1. ```
+>    <configuration>
+>    <property>
+>    <name>dfs.replication</name>
+>    <value>1</value>
+>    </property>
+>    </configuration>
+>    ```
 
 * Next is the configuration for **mapred-site.xml**. This file you will need to make a copy of **mapred-site.xml.template** naming it as above using **cp** after that you will need to give it rights to write to it using the  **chmod** command.  I will be giving it full rights **777** to keep things simple.
 
@@ -200,25 +204,31 @@ $ sudo cp mapred-site.xml.template mapred-site.xml
 
 * After you have copied it open it using any text editor you want and add the configurations below to the file.
 
-> 1. <configuration>
-> 2. <property>
-> 3. <name>mapreduce.framework.name</name>
-> 4. <value>yarn</value>
-> 5. </property>
-> 6. </configuration>
+> 1. ```
+>    <configuration>
+>    <property>
+>    <name>mapreduce.framework.name</name>
+>    <value>yarn</value>
+>    </property>
+>    </configuration>
+>    ```
 
 We are almost done.  Next we need to configure the **yarn-site.xml**.  The location will be in /etc/hadoop inside of the installation of Hadoop like all the other files.  The configurations is as follows:
 
-> 1. <configuration>
-> 2. <property>
-> 3. <name>yarn.nodemanager.aux-services</name>
-> 4. <value>mapreduce_shuffle</value>
-> 5. </property>
-> 6. <property>
-> 7. <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
-> 8. <value>org.apache.hadoop.mapred.ShuffleHandler</value>
-> 9. </property>
-> 10. </configuration>
+> 1. ```
+>    <configuration>
+>    <property>
+>    <name>yarn.nodemanager.aux-services</name>
+>    <value>mapreduce_shuffle</value>
+>    </property>
+>    <property>
+>    <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+>    <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+>    </property>
+>    </configuration>
+>    ```
+
+
 
 Once you have completed all those configurations you can finally start working with HDFS.  Before that though we need to format the namenode.  To do so the command is shown below.
 
