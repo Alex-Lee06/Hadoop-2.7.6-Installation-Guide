@@ -153,10 +153,10 @@ $ exit
 
 > Gedit is just a simple text editor.  You can use whatever you like.
 
-* Editing our **~/.bashrc file**.  I recommend typing this part in to learn, but you can copy and paste from here.  Add this to the bottom of your **~/.bashrc**.
+* Editing our **~/.bashrc file**.  I recommend typing this part in to learn, but you can copy and paste from here.  Add this to the bottom of your **~/.bashrc**.  This will add the paths to your **hadoop-2.7.6** and allow you to start dfs and yarn at any location.  This will also fix any native warning issues you will have.
 
 > ```
-> export HADOOP_PREFIX=/home/hdadmin/hadoop-2.7.6
+> export HADOOP_PREFIX=/home/hadoop/hadoop-2.7.6
 > export PATH=$PATH:$HADOOP_PREFIX/bin
 > export PATH=$PATH:$HADOOP_PREFIX/sbin
 > export HADOOP_MAPRED_HOME=${HADOOP_PREFIX}
@@ -196,7 +196,7 @@ $ exit
 
 > After editing this file save it and move on to the **hdfs-site.xml**
 
-* Let's configure the **hdfs-site.xml**. The location to this file is in etc/hadoop inside the installation directory for Hadoop.  The needed configuration is below.
+* Let's configure the **hdfs-site.xml**. The location to this file is in etc/hadoop inside the installation directory for Hadoop.  This allows for configurations to your replications of **DataNodes**.  This is important once you start dealing with more than 1 machine.  By changing the value you can determine the amount of datanodes you have.  We will only be working with a replication of 1 since this is for a **StandAlone mode**. The needed configuration is below.
 
 > 1. ```
 >    <configuration>
@@ -213,7 +213,7 @@ $ exit
 $ sudo cp mapred-site.xml.template mapred-site.xml
 ```
 
-* After you have copied it open it using any text editor you want and add the configurations below to the file.
+* After you have copied it open it using any text editor you want and add the configurations below to the file.  This will allow mapreduce to use resources from yarn since yarn is a resource manager.
 
 > 1. ```
 >    <configuration>
@@ -224,7 +224,7 @@ $ sudo cp mapred-site.xml.template mapred-site.xml
 >    </configuration>
 >    ```
 
-We are almost done.  Next we need to configure the **yarn-site.xml**.  The location will be in /etc/hadoop inside of the installation of Hadoop like all the other files.  The configurations is as follows:
+We are almost done.  Next we need to configure the **yarn-site.xml**.  The location will be in /etc/hadoop inside of the installation of Hadoop like all the other files.  The configurations is as follows.
 
 > 1. ```
 >    <configuration>
@@ -290,7 +290,9 @@ master@hadoop:/usr/local/hadoop-2.7.6/sbin$ jps
 
 ```
 
-* Once you have all the services above showing you can access **HDFS** by going to **localhost:50070**. This is the web interface for **HDFS**
+* Once you have all the services above showing you can access **HDFS** by going to **localhost:50070**. This is the web interface for **HDFS**.  Play around with the web UI to learn more about **HDFS**.
 
-## The installation of Hadoop 2.7.6 is complete you can now run map reduce jobs!!
+## The installation of Hadoop 2.7.6 is complete you can now run map reduce jobs on Ubuntu 18!!
+
+## My next guide will show you how to install Kafka.  I will make guides for a full Big Data Pipeline.  Stay tune for the next GUIDE!!
 
