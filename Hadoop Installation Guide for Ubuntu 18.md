@@ -145,7 +145,7 @@ $sudo gedit ~/.bashrc
 * Editing our **~/.bashrc file**.  I recommend typing this part in to learn, but you can copy and paste from here.
 
 > ```
-> export HADOOP_PREFIX=/home/hdadmin/hadoop-2.7.1
+> export HADOOP_PREFIX=/home/hdadmin/hadoop-2.7.6
 > export PATH=$PATH:$HADOOP_PREFIX/bin
 > export PATH=$PATH:$HADOOP_PREFIX/sbin
 > export HADOOP_MAPRED_HOME=${HADOOP_PREFIX}
