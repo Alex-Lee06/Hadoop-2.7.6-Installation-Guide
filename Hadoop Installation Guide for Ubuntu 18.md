@@ -1,6 +1,6 @@
 # Hadoop Installation Guide for Ubuntu 18 in Standalone Mode
 
-This installation guide with walk you through on how to install Hadoop in a psuedo-distributed mode.
+This installation guide with walk you through on how to install Hadoop in a Standalone mode.
 
 Below is a script that you will be able to run as well to install Hadoop-2.7.6 but the configurations for Hadoop will still need to be configured.
 
