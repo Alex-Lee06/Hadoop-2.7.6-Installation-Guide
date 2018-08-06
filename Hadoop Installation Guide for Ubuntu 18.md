@@ -296,3 +296,5 @@ master@hadoop:/usr/local/hadoop-2.7.6/sbin$ jps
 
 ## My next guide will show you how to install Kafka.  I will make guides for a full Big Data Pipeline.  Stay tune for the next GUIDE!!
 
+# Big Thanks to Everyone!! Hope you come back!!
+
