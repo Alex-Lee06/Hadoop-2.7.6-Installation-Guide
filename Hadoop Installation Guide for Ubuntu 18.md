@@ -4,7 +4,7 @@ This installation guide with walk you through on how to install Hadoop in a Stan
 
 Below is a script that you will be able to run as well to install Hadoop-2.7.6 but the configurations for Hadoop will still need to be configured.
 
-## Prerequisite before installing Hadoop Psuedo-Distributed is as follows.
+## Prerequisite before installing Hadoop Standalone is as follows.
 
 * Java version 1.7.0 or 1.8.0
 
@@ -118,7 +118,7 @@ $ exit
 * With ssh installed and configured we can now download and install Hadoop-2.7.6. To do this let's go to http://hadoop.apache.org/releases.html and look for 2.7.6 binary
 * Or you can follow the steps below for CLI commands.
 * First lets move to your **Downloads** folder.
-* Please pay attention to what is before **$** so that this guide with be easier to follow.  It will show which directory you are located.
+* Please pay attention to what is before **$** so that this guide will be easier to follow.  It will show which directory you are currently located in.
 
 ```
 ~$ cd Downloads
@@ -196,7 +196,7 @@ $ exit
 
 > After editing this file save it and move on to the **hdfs-site.xml**
 
-* Let's configure the **hdfs-site.xml**. The location to this file is in etc/hadoop inside the installation directory for Hadoop.  This allows for configurations to your replications of **DataNodes**.  This is important once you start dealing with more than 1 machine.  By changing the value you can determine the amount of datanodes you have.  We will only be working with a replication of 1 since this is for a **StandAlone mode**. The needed configuration is below.
+* Let's configure the **hdfs-site.xml**. The location to this file is in etc/hadoop inside the installation directory for Hadoop.  This allows for configurations to your replications of **DataNodes**.  This is important once you start dealing with more than 1 machine.  By changing the value you can determine the amount of **Datanodes** you have.  We will only be working with a replication of 1 since this is for a **StandAlone mode**. The needed configuration is below.
 
 > 1. ```
 >    <configuration>
